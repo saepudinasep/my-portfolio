@@ -27,7 +27,7 @@ export default function MobileNav({ navOpen }: MobileNavProps) {
           border-l border-border
           flex flex-col items-center justify-center
           space-y-2 px-6
-          transition-transform duration-500
+          transition-all duration-500
           ${navOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
