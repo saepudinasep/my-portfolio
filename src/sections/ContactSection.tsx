@@ -1,4 +1,8 @@
+'use client';
+
 import SectionHeader from '@/components/ui/SectionHeader';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { LuMail, LuMapPin, LuPhone, LuSend } from 'react-icons/lu';
 
 const contactInfo = [
@@ -23,6 +27,28 @@ const contactInfo = [
 ];
 
 export default function ContactSection() {
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (event: React.SubmitEvent) => {
+    event.preventDefault();
+    setLoading(true);
+    const formData = new FormData(event.target);
+    formData.append('access_key', 'ff90dec8-e53f-4172-8d35-067db7159821');
+
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      toast.success('Form submitted successfully');
+      event.target.reset();
+    } else {
+      toast.error('Error submitting form');
+    }
+
+    setLoading(false);
+  };
   return (
     <section id='contact' className='py-24 relative overflow-hidden'>
       {/* background glow */}
@@ -37,12 +63,16 @@ export default function ContactSection() {
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
           {/* left -form */}
-          <form className='p-6 rounded-2xl bg-surface border border-border space-y-5'>
+          <form
+            onSubmit={onSubmit}
+            className='p-6 rounded-2xl bg-surface border border-border space-y-5'
+          >
             <h3 className='text-lg font-semibold text-text'>Send a message</h3>
             {/* name */}
             <div>
               <label className='text-sm text-gray-400 block mb-1'>Name</label>
               <input
+                name='name'
                 type='text'
                 required
                 placeholder='Your Name'
@@ -53,6 +83,7 @@ export default function ContactSection() {
             <div>
               <label className='text-sm text-gray-400 block mb-1'>Email</label>
               <input
+                name='email'
                 type='text'
                 required
                 placeholder='Your Email'
@@ -63,6 +94,7 @@ export default function ContactSection() {
             <div>
               <label className='text-sm text-gray-400 block mb-1'>Message</label>
               <textarea
+                name='message'
                 required
                 rows={4}
                 placeholder='Your Message...'
@@ -70,11 +102,21 @@ export default function ContactSection() {
               />
             </div>
             <button
+              disabled={loading}
               type='submit'
               className='w-full py-3 rounded-full bg-primary text-gray-200 font-medium hover:opacity-90 transition flex items-center justify-center gap-2 cursor-pointer'
             >
-              Send Message
-              <LuSend className='w-4 h-4' />
+              {loading ? (
+                <>
+                  <span className='w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin'></span>
+                  Sending Message...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <LuSend className='w-4 h-4' />
+                </>
+              )}
             </button>
           </form>
           {/* right - form */}
