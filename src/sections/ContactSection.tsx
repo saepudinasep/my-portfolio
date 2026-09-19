@@ -64,6 +64,9 @@ export default function ContactSection() {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
           {/* left -form */}
           <form
+            data-aos='fade-right'
+            data-aos-delay='100'
+            data-aos-anchor-placement='top-center'
             onSubmit={onSubmit}
             className='p-6 rounded-2xl bg-surface border border-border space-y-5'
           >
@@ -119,8 +122,13 @@ export default function ContactSection() {
               )}
             </button>
           </form>
-          {/* right - form */}
-          <div className='p-2'>
+          {/* right - contact info */}
+          <div
+            className='p-2'
+            data-aos='fade-left'
+            data-aos-delay='100'
+            data-aos-anchor-placement='top-center'
+          >
             <h3 className='text-xl font-semibold mb-6'>Contact Information</h3>
             <div className='space-y-4'>
               {contactInfo.map((item, index) => (

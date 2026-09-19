@@ -9,7 +9,12 @@ export default function AboutSection() {
       <div className='absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl bg-primary/10' />
       <div className='w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center'>
         {/* leftside */}
-        <div className='flex justify-center lg:justify-start'>
+        <div
+          data-aos='fade-right'
+          data-aos-delay='100'
+          data-aos-anchor-placement='top-center'
+          className='flex justify-center lg:justify-start'
+        >
           <div className='relative w-85 h-85 md:w-120 md:h-120 rounded-2xl bg-surface/80 backdrop-blur-md border border-border flex items-center justify-center'>
             <div className='absolute inset-0 rounded-2xl bg-primary/10 blur-2xl' />
             <div className='w-[85%] h-[85%] relative'>
@@ -24,7 +29,12 @@ export default function AboutSection() {
         </div>
 
         {/* rightside */}
-        <div className='space-y-6'>
+        <div
+          data-aos='fade-left'
+          data-aos-delay='100'
+          data-aos-anchor-placement='top-center'
+          className='space-y-6'
+        >
           <span className='text-sm text-primary bg-primary/10 px-4 py-1.5 rounded-full border border-border inline-block'>
             About Me
           </span>

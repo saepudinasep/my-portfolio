@@ -40,7 +40,12 @@ export default function TestimonialSection() {
           badge='Testimonials'
           description="Feedback from clients and collaborators 1've worked with on various projects."
         />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div
+          data-aos='fade-up'
+          data-aos-delay='100'
+          data-aos-achor-placement='top-center'
+          className='grid grid-cols-1 md:grid-cols-2 gap-8'
+        >
           {testimonials.map((item, index) => (
             <div
               key={index}

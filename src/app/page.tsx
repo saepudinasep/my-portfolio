@@ -1,3 +1,4 @@
+import AnimationLayout from '@/components/layouts/AnimationLayout';
 import AboutSection from '@/sections/AboutSection';
 import ContactSection from '@/sections/ContactSection';
 import ExperienceSection from '@/sections/ExperienceSection';
@@ -9,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   return (
-    <>
+    <AnimationLayout>
       <HeroSection />
       <AboutSection />
       <ProjectSection />
@@ -18,6 +19,6 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <Toaster />
-    </>
+    </AnimationLayout>
   );
 }
