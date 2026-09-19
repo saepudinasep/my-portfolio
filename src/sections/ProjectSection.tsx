@@ -40,7 +40,7 @@ export default function ProjectSection() {
   return (
     <section id='projects' className='py-24 relative'>
       {/* background glow */}
-      <div className='absolute top-0 left-1/2 -transalte-x-1/2 w-80 h-80 rounded-full blur-3xl' />
+      <div className='absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl bg-primary/10' />
       <div className='w-[90%] max-w-6xl mx-auto space-y-12'>
         <SectionHeader
           title='Some of my recent'

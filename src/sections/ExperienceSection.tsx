@@ -39,7 +39,7 @@ export default function ExperienceSection() {
   return (
     <section id='experience' className='py-32 relative overflow-hidden'>
       {/* background glow */}
-      <div className='absolute top-1/2 left-1/4 -transalte-x-1/2 w-80 h-80 rounded-full blur-3xl' />
+      <div className='absolute top-1/2 left-1/4 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl bg-primary/10' />
       <div className='container mx-auto px-6 relative z-10'>
         <SectionHeader
           title='Experience that'

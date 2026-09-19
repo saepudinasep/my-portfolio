@@ -31,7 +31,9 @@ const testimonials = [
 
 export default function TestimonialSection() {
   return (
-    <section id='testimonials' className='py-24 bg-background'>
+    <section id='testimonials' className='py-24 bg-background relative overflow-hidden'>
+      {/* background glow */}
+      <div className='absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl bg-primary/10' />
       <div className='w-[90%] max-w-6xl mx-auto space-y-16'>
         <SectionHeader
           title='What people say about me'

@@ -11,7 +11,7 @@ export default function HeroSection() {
       className='relative min-h-screen overflow-hidden flex items-center pt-30 py-10'
     >
       {/* background glow */}
-      <div className='absolute top-1/4 left-1/3 -transalte-x-1/2 w-80 h-80 rounded-full blur-3xl' />
+      <div className='absolute top-1/4 left-1/3 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl bg-primary/10' />
 
       {/* background */}
       <div className='inset-0 absolute'>
