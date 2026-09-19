@@ -1,11 +1,19 @@
 import Link from 'next/link';
 import { navLinks } from './Navbar';
+import { scrollToSection } from '@/lib/smoothScroll';
 
 interface MobileNavProps {
   navOpen: boolean;
+  onLinkClick?: () => void;
 }
 
-export default function MobileNav({ navOpen }: MobileNavProps) {
+export default function MobileNav({ navOpen, onLinkClick }: MobileNavProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href);
+    onLinkClick?.();
+  };
+
   return (
     <>
       {/* Overlay */}
@@ -36,6 +44,7 @@ export default function MobileNav({ navOpen }: MobileNavProps) {
             <li key={index}>
               <Link
                 href={link.href}
+                onClick={(e) => handleClick(e, link.href)}
                 className='
                   block w-full text-center
                   py-4 px-6 rounded-lg

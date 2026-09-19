@@ -5,14 +5,15 @@ import Logo from './Logo';
 import LinkButton from '../ui/LinkButton';
 import { LuDownload, LuMenu, LuX } from 'react-icons/lu';
 import MobileNav from './MobileNav';
+import { scrollToSection } from '@/lib/smoothScroll';
 
 export const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Testimonials', href: '/testimonials' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '#' },
+  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -31,6 +32,11 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href);
+  };
+
   return (
     <>
       <nav
@@ -46,7 +52,8 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className='px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-primary hover:bg-surface'
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className='px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-primary hover:bg-surface transition-colors'
                 >
                   {link.label}
                 </a>
@@ -73,7 +80,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <MobileNav navOpen={navOpen} />
+      <MobileNav navOpen={navOpen} onLinkClick={() => setNavOpen(false)} />
     </>
   );
 }
